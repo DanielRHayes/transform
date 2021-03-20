@@ -25,6 +25,7 @@ export default (req: NextApiRequest, res: NextApiResponse) => {
     const schema = tsj.createGenerator(config).createSchema(config.type);
     res.status(200).send(JSON.stringify(schema, null, 2));
   } catch (e) {
+    console.error(e);
     res.status(500).send(e.message);
   }
   fs.unlinkSync(filePath);
